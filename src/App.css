@@ -1,38 +1,764 @@
-.App {
+*{
+ 
+}
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.navigation {
+  position: fixed;
+  width: 60px;
+  height: 100%;
+  background: #ff7700;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+/* .navigation:hover,
+.navigation.active {
+  width: 60px;
+} */
+
+.navigation:hoover{
+  width:60px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  transition: 1s;
+}
+
+.navigation ul li:hover {
+  background: #3e3e3e;
+}
+.navigation ul li:hover ~ .home {
+  margin-left: 200px; /* Adjust the margin based on the increased width of the left navbar when hovered */
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: white;
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
   text-align: center;
+  color: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navigation ul li a .icon .fa {
+  font-size: 24px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+.toggle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: black;
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+.toggle.active {
+  background: #ff7700;
+}
+
+.toggle::before {
+  content: "\f0c9";
+  font-family: fontAwesome;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  line-height: 60px;
+  text-align: center;
+  font-size: 24px;
+  color: #ff7700;
+}
+
+.toggle.active::before {
+  content: "\f00d";
+}
+
+@media (max-width: 767px) {
+  .navigation {
+    left: -60px;
+  }
+  .navigation.active {
+    left: 0px;
+    width: 100%;
   }
 }
+.logo{
+  
+  margin:0px 20px 30px ;
+  padding: 10px 0 14px 0 ;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: black;
+  z-index: 999;
+}
+span{
+  color: #ff7700;
+}
 
-.App-header {
-  background-color: #282c34;
+body {
+  font-family: "Poppins", sans-serif;
   min-height: 100vh;
+  background: black;
+}
+.home{
+  color: white;
+  margin-left: 70px;
+  
+}
+.about{
+  color: white;
+  margin-left: 70px;
+  
+}
+.movie{
+  margin-top: 60px;
+
+}
+.series{
+  margin-top: 60px;
+  margin-left: 70px;
+  color: #fff;
+}
+.movieDetails{
+  color: white;
+  margin-left: 70px;
+}
+.movie-card {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-card__details {
+  position: absolute;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-card__details {
+  opacity: 1;
+}
+
+.movie-card__title {
+  font-size: 15px;
+  color:#ff7700;
+  margin-bottom: 5px;
+}
+
+.movie-card__overview {
+  font-size: 10px;
+}
+
+.movie-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.movie-card-container .load{
+  margin: auto;
+  margin-left: 290%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* movie details */
+.movie-details-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.movie-details {
+  width: 800px;
+  margin-top: 50px;
+  background-color: black;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+
+.movie-details-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.movie-details-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.movie-details-overview {
+  margin-bottom: 10px;
+}
+
+.movie-details-info {
+  margin-bottom: 5px;
+}
+
+.movie-details-info-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.movie-details-image {
+  flex: 0 0 30%;
+  text-align: center;
+  position: relative;
+}
+
+.movie-details-image img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  font-size: 48px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 60%;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.play-icon:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+.movieError{
+  margin: auto;
+  width: 50%;
+  color:red;
+  margin-left:38%
+}
+
+
+/* similar show */
+
+.tv-shows-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tv-show-item {
+  width: calc(30% - 10px);
+  margin: 5px;
+  text-align: center;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.tv-show-item:hover {
+  transform: scale(1.05);
+}
+
+.tv-show-item img {
+  width: 100%;
+  height: auto;
+}
+
+.tv-show-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ff7700;
+  padding: 55px;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tv-show-item:hover .tv-show-name {
+  opacity: 1;
+}
+
+
+.tv-show-item:hover {
+  transform: scale(1.05);
+}
+
+.tv-show-item img {
+  width: 100%;
+  height: auto;
+}
+.similar-tv-shows{
+  margin-left: 50px;
+  color:white;
+}
+.similar-tv-shows h2{
+  margin: auto;
+  width: 20%;
+  margin-bottom: 20px;
+}
+/* Auth */
+
+.auth {
+  width: 500px;
+  margin-top: 70px;
+  margin-left: 30%;
+  
+ 
+  padding: 20px;
+  background-color: black;
+  border-radius: 5px;
+  color:white
+}
+
+.auth p {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
+  
+}
+
+.google-logo {
+  width: 17px;
+  height: 16px; /* Adjust the size of the logo as needed */
+  margin-top: 3px;
+  margin-right: 4px; /* Add spacing between the logo and text */
+}
+/* .auth {
+  background-image: url(../src/images/mov2.jpg);
+  background-size: cover;
+} */
+
+.auth input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.auth button {
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth button:hover {
+  background-color: #ff7700;
+}
+
+.auth .google-signin-button {
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.auth .email-input {
+  margin-bottom: 10px;
+}
+
+.auth .password-input {
+  margin-bottom: 10px;
+}
+
+.auth .sign-up-button {
+  margin-top: 10px;
+  background-color: #fff;
+  color: black;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.center-buttons {
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+
+.loader {
+  border: 4px solid #ff7700; /* Light gray border */
+  border-top: 4px solid hwb(0 100% 0%); /* Blue border for the loading animation */
+  border-radius: 50%; /* Create a circular shape */
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Apply the animation */
+  margin: auto;
+  margin-left: 50%;
+  
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Initial rotation */
+  }
+  100% {
+    transform: rotate(360deg); /* Complete one full rotation */
+  }
+}
+
+/* recommendations */
+.recHeader {
+  margin-top: 70px;
   color: white;
+  margin-left: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0px; /* Adjust the height as needed */
 }
 
-.App-link {
-  color: #61dafb;
+.recHeader-content {
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.allRecomendations{
+  margin-top: 70px;
+  color: white;
+  margin-left: 70px;
+
 }
+.recommendations{
+  margin-top: 70px;
+  color: white;
+  margin-left: 70px;
+
+}
+.recommend{
+  margin-top: 70px;
+  color: white;
+  margin-left: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+.recommendations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+.red{
+  color: red;
+}
+.alert {
+
+  color: #ff7700;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  display: inline-block;
+  max-width: max-content;
+}
+.round-button {
+  float:right;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ff7700;
+
+  color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.round-button i {
+  font-size: 16px;
+}
+.card {
+  width: 100%; /* Adjust the width as desired */
+  height: 90px; /* Adjust the height as desired */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  display: flex;
+}
+
+.icon {
+  width: 100px;
+  padding: 10px;
+  color:red
+}
+.images {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.movie-images {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.content h4 {
+  margin-top: 0;
+  color: #ff7700;
+  font-size: 15px;
+}
+
+.deleteBtns,
+.updateBtns {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.content p{
+  margin: 0;
+  font-size: 12px;
+  
+}
+
+/* Additional styling as per your requirements */
+
+/* 
+
+.card {
+  background-image: url(../src/images/mov2.jpg);
+  background-size: cover;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  max-height: 220px;
+}
+
+.deleteBtn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: '#000';
+  color: 'white';
+  padding: 10px;
+  borderRadius: 5px;
+}
+
+.updateBtn {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: '#000';
+  color: 'white';
+  padding: 10px;
+  borderRadius: 5px;
+} */
+
+
+/* update movie */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  max-width: 400px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: red;
+}
+
+/* Additional styling for input fields, labels, etc. */
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.recommendations {
+  margin-top: 70px;
+  margin-left: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+ 
+}
+
+.recommend-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recommend-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.recommend-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input[type='checkbox'] {
+  margin-top: 5px;
+}
+
+button[type='submit'] {
+  background-color: #ff3d00;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button[type='submit']:hover {
+  background-color: #e65100;
+}
+.inline-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.inline-input label {
+  margin-left: 10px; /* Adjust the spacing between input and label as needed */
+}
+
+
