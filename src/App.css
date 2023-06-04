@@ -856,7 +856,21 @@ button[type='submit']:hover {
  
 }
 .allRecomendations{
-  margin-left: 20px;
+  margin-left: 10px;
+}
+.auth{
+  margin-left: 0%;
+}
+.center-buttons {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14%;
+  background-color: #e65100;
+  padding: 10px;
+  border-radius: 20px;
 }
 
 }
