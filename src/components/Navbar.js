@@ -6,6 +6,8 @@ import { Link ,useNavigate} from 'react-router-dom';
 import { auth } from './config/firebase';
 
 const Navbar = () => {
+ 
+    const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -30,14 +32,26 @@ const Navbar = () => {
       });
   };
 
+  
+    const toggleMenu = () => {
+      setIsActive(!isActive);
+    };
+  
 
   return (
+
     <div className="navbary">
+        <Link to="/">
       <div className="logo">
+    
         Drama<span>Buzz</span>
+    
       </div>
-      <div class="toggle" onclick="toggleMenu()"></div>
-      <div className="navigation">
+      </Link>
+      <div className={`toggle ${isActive ? 'active' : ''}`} onClick={toggleMenu}>
+      {/* Content */}
+    </div>
+    <div className={`navigation ${isActive ? 'active' : ''}`}>
         <ul>
           <li>
             <Link to="/">
@@ -47,24 +61,26 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="tv-shows">
+          
               <span className="icon">📽</span>
-              <span className="title"></span>
+              <span className="title">Tv Shows</span>
             </Link>
           </li>
-          <Link to="recommendations">
-            <li>
-              <a href="#">
-                <span className="icon">🎬</span>
-                <span className="title">Recommendations</span>
-              </a>
-            </li>
-          </Link>
+        
+          <li>
+            <Link to="recommendations">
+          
+              <span className="icon">🎬</span>
+              <span className="title">Public choice</span>
+            </Link>
+          </li>
+         
           {!isLoggedIn && (
   <Link to="auth">
     <li>
       <a href="#">
         <span className="icon">📺</span>
-        <span className="title">Auth</span>
+        <span className="title">Sign up</span>
       </a>
     </li>
   </Link>

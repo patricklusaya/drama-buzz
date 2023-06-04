@@ -22,8 +22,6 @@ class Movie extends Component {
   return (
     <div class='movie'>
       <h3>Popular 🔥</h3>
-     
-
       <div className="movie-card-container">
   {movies.length === 0 ? (
    <div className='load'>

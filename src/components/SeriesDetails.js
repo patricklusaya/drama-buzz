@@ -54,9 +54,9 @@ const SeriesDetails = () => {
       
        </div>
       )}
-    
 
-      <div className="similar-tv-shows">
+
+  <div className="similar-tv-shows">
   <h2>Similar TV Shows</h2>
   <div className="tv-shows-list">
     {similarTVShows.slice(0, 6).map((tvShow) => (

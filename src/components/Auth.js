@@ -47,8 +47,13 @@ const Auth = () => {
 
   return (
     <div className="auth">
+      <div className='rightSection'>
+        <h2>Recommend A Great Movie to Others</h2>
+        </div>
+      
+      
       <div className="center-buttons">
-        <p>Have a great Movie in mind? Recommend others to see</p>
+        <p>Create An Account Now</p>
         <button className="google-signin-button" onClick={handleSingUpWithGoogle}>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png" alt="Google Logo" className="google-logo" />SignUp With Google
         </button>
@@ -58,6 +63,9 @@ const Auth = () => {
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2008px-Google_%22G%22_Logo.svg.png" alt="Google Logo" className="google-logo" /> Continue With Google
         </button>
       </div>
+
+
+
      
     </div>
   );
