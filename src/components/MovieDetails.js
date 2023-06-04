@@ -30,7 +30,7 @@ const MovieDetails = () => {
         <div className="movie-details">
           <div className="movie-details-content">
 
-            <h1 className="movie-details-title">{propsData.title}</h1>
+            <p className="movie-details-title">{propsData.title}</p>
             <p className="movie-details-overview">{propsData.overview}</p>
             <p className="movie-details-info">
               <span className="movie-details-info-label">Release Date:</span> {propsData.release_date}
@@ -42,7 +42,7 @@ const MovieDetails = () => {
 
           <div className="movie-details-image">
             <img src={`https://image.tmdb.org/t/p/w500/${propsData.poster_path}`} alt="Movie Poster" />
-            <a href="https://www.youtube.com/watch?v=qEVUtrk8_B4" target="_blank" rel="noopener noreferrer">
+            <a className="play-icon" href="https://www.youtube.com/watch?v=qEVUtrk8_B4" target="_blank" rel="noopener noreferrer">
               <span className="play-icon">&#9658;</span>
             </a>
           </div>

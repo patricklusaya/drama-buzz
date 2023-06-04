@@ -34,8 +34,9 @@ const Navbar = () => {
   return (
     <div className="navbary">
       <div className="logo">
-        Drama <span>Buzz</span>
+        Drama<span>Buzz</span>
       </div>
+      <div class="toggle" onclick="toggleMenu()"></div>
       <div className="navigation">
         <ul>
           <li>
@@ -88,15 +89,15 @@ const Navbar = () => {
           )}
         </ul>
       </div>
-      <div className="toggle" onClick="toggleMenu()"></div>
-      {/* <script type="text/javascript">
-        function toggleMenu() {
-          let navigation = document.querySelector('.navigation');
-          let toggle = document.querySelector('.toggle');
-          navigation.classList.toggle('active');
-          toggle.classList.toggle('active');
-        }
-      </script> */}
+      {/* <div class="toggle" onclick="toggleMenu()"></div> */}
+  {/* <script type="text/javascript">
+    function toggleMenu() {
+      let navigation = document.querySelector('.navigation');
+      let toggle = document.querySelector('.toggle');
+      navigation.classList.toggle('active');
+      toggle.classList.toggle('active');
+    }
+  </script> */}
     </div>
   );
 };

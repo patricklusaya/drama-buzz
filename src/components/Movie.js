@@ -27,7 +27,7 @@ class Movie extends Component {
       <div className="movie-card-container">
   {movies.length === 0 ? (
    <div className='load'>
-     <div className="loader bounce">
+     <div className="loader ">
       <div className="ball"></div>
       <div className="ball"></div>
       <div className="ball"></div>

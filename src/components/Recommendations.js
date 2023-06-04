@@ -94,7 +94,15 @@ if (moviesQuery) {
           
         <div className='recommendationss'>
       
-          {movies.map((movie) => (
+        {movies.length === 0 ? (
+   <div className='load'>
+     <div className="loader ">
+      <div className="ball"></div>
+      <div className="ball"></div>
+      <div className="ball"></div>
+    </div>
+   </div>
+  ) : (movies.map((movie) => (
             <div key={movie.id} className='card'>
               <div className='images'>
                 <img
@@ -125,8 +133,9 @@ if (moviesQuery) {
                 />
               </div>
             </div>
-          ))}
-        </div>
+        ))
+        )}
+      </div>
       </div>
     );
   }

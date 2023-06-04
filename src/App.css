@@ -94,6 +94,13 @@
   background: black;
   cursor: pointer;
   transition: 0.7s;
+  z-index: 999;
+}
+@media screen and (max-width: 600px) {
+  /* Styles for screens smaller than 600px (e.g., mobile) */
+  .toggle{
+    right: 10px;
+  }
 }
 
 .toggle.active {
@@ -142,6 +149,7 @@
 }
 span{
   color: #ff7700;
+  font-weight: 800;
 }
 
 body {
@@ -154,6 +162,15 @@ body {
   margin-left: 70px;
   
 }
+
+
+@media screen and (max-width: 600px) {
+  /* Styles for screens smaller than 600px (e.g., mobile) */
+  .home{
+    margin-left: 80px; /* Increase the image size on smaller screens */
+  }
+}
+
 .about{
   color: white;
   margin-left: 70px;
@@ -219,13 +236,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 10px;
 }
-.movie-card-container .load{
-  margin: auto;
-  margin-left: 290%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 /* movie details */
 .movie-details-container {
@@ -233,6 +244,25 @@ body {
   justify-content: center;
   margin-top: 60px;
 }
+
+
+
+@media screen and (max-width: 600px) {
+   .movie-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+   
+  }
+
+  .movie-card__item {
+    flex-basis: calc(50% - 20px); /* Adjust the width of each movie card and add spacing */
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+    padding: 10px; /* Add some spacing between movie cards */
+  }
+  
+}
+
 
 .movie-details {
   width: 800px;
@@ -468,7 +498,9 @@ body {
   margin-left: 50%;
   
 }
-
+.movie-card-container .load{
+  margin-left: 90%;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg); /* Initial rotation */
@@ -761,4 +793,46 @@ button[type='submit']:hover {
   margin-left: 10px; /* Adjust the spacing between input and label as needed */
 }
 
+/* Media Queries */
 
+@media screen and (max-width: 600px){
+  
+  .movie-details {
+    width: 100%;
+  }
+.movie-details-info{
+  font-size: 12px;
+}
+  .movie-details-image {
+    width: 200px;
+    height: 400px;
+  }
+  .movie-details-title{
+    font-size: 25px;
+  }
+  
+    .play-icon {
+      top: 20%;
+      left: 50%;
+      font-size: 28px; 
+  }
+  .similar-tv-shows{
+    margin-left: 7px;
+    color:white;
+  }
+  .similar-tv-shows h2{
+    margin: auto;
+    width: 60%;
+    margin-bottom: 20px;
+  }
+  .loader {
+  
+    margin: auto;
+    margin-left: 40%;
+    
+  }
+  .movie-card-container .loader{
+    margin-left: 0%;
+  }
+
+}
