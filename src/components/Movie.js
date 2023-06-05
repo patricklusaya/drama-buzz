@@ -37,7 +37,7 @@ class Movie extends Component {
         <div className="movie-card">
           <img
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt="Movie Title"
+            alt="img"
             className="movie-card__image"
           />
           <div className="movie-card__details">

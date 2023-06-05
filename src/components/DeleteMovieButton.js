@@ -4,14 +4,22 @@ import { db, auth } from './config/firebase';
 
 export default class DeleteMovieButton extends Component {
     
-    handleDelete= ()=>{
-        const { id, deleteMovie } = this.props;
-       const refMovie = doc(db,"movies",id);
-       deleteDoc(refMovie)
-       .then(console.log('movie deleted'))
-       .catch((error)=> console.error(error))
-       
+  handleDelete = () => {
+    const { id, deleteMovie } = this.props;
+    const refMovie = doc(db, 'movies', id);
+
+    // Show confirmation alert to confirm deletion
+    const confirmDelete = window.confirm('Are you sure you want to delete this movie?');
+
+    if (confirmDelete) {
+      deleteDoc(refMovie)
+        .then(() => {
+          console.log('Movie deleted');
+          deleteMovie(id); // Call the deleteMovie function passed as a prop to update the movies in the parent component
+        })
+        .catch((error) => console.error(error));
     }
+  };
   render() {
     const createdBy = this.props.createdBy;
     const authenticatedUser = auth.currentUser;
@@ -22,7 +30,7 @@ export default class DeleteMovieButton extends Component {
       
       <div>
       {isOwner &&
-        <a onClick={()=>this.handleDelete(this.props.id)}><i class="fa fa-trash"></i></a>
+        <a onClick={()=>this.handleDelete(this.props.id)} style={{cursor:'pointer'}}><i class="fa fa-trash"></i></a>
       }
     
       </div>

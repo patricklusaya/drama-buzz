@@ -71,29 +71,29 @@ const Navbar = () => {
             <Link to="recommendations">
           
               <span className="icon">🎬</span>
-              <span className="title">Public choice</span>
+              <span className="title">Public Choices</span>
             </Link>
           </li>
          
           {!isLoggedIn && (
-  <Link to="auth">
+  
     <li>
-      <a href="#">
+     <Link to="auth">
         <span className="icon">📺</span>
         <span className="title">Sign up</span>
-      </a>
+        </Link>
     </li>
-  </Link>
+ 
 )}
           {isLoggedIn && (
-  <Link to="recommend">
+  
     <li>
-      <a href="#">
+     <Link to="recommend">
         <span className="icon">➕</span>
         <span className="title">Recommend </span>
-      </a>
+        </Link>
     </li>
-  </Link>
+ 
 )}
           {isLoggedIn && (
             <li>
