@@ -94,11 +94,13 @@ handleResize = () => {
     return (
       <div className='allRecomendations'>
       {isLoggedIn && (
-        <p className="alert">
-          Welcome {user}, you have recommended {userMoviesCount}{' '}
-          {userMoviesCount === 1 ? 'movie' : 'movies'} so far.
-        </p>
-      )}
+  <p className="alert">
+    {userMoviesCount === 0
+      ? `Welcome ${user}, you have not recommended any movie yet.`
+      : `Welcome ${user}, you have recommended ${userMoviesCount} ${userMoviesCount === 1 ? 'movie' : 'movies'} so far.`}
+  </p>
+)}
+
       {isLoggedIn && (
         <Link to="/recommend">
           <button className="round-button">
@@ -108,7 +110,7 @@ handleResize = () => {
       )}
           
         <div className='recommendationss'>
-      
+        <h3>Recommended By The Public</h3>
         {movies.length === 0 ? (
    <div className='load'>
      <div className="loader ">
@@ -116,9 +118,14 @@ handleResize = () => {
       <div className="ball"></div>
       <div className="ball"></div>
     </div>
+   
    </div>
+  
   ) : (movies.map((movie) => (
+  <div>
+
             <div key={movie.id} className='card'>
+              
               <div className='images'>
                 <img
                   src={movie.movieImage}
@@ -130,7 +137,9 @@ handleResize = () => {
                 </icon>
               </div>
               <div className='content'>
+              <Link to={`/recommendation-details/${movie.id}`} state={movie} style={{textDecoration:'none'}}>
                 <h4>{movie.title}</h4>
+                </Link>
                 <p>
                     {screenWidth <= 600
                       ? movie.description.substring(0, 25) + '...'
@@ -153,7 +162,9 @@ handleResize = () => {
                   createdBy={movie.userId}
                 />
               </div>
+      
             </div>
+           </div>
         ))
         )}
       </div>

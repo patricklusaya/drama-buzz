@@ -1,7 +1,8 @@
 import { FETCH_MOVIES_SUCCESS, FETCH_MOVIES_FAILURE,
-   FETCH_MOVIE_DETAILS_SUCCESS, FETCH_MOVIE_DETAILS_FAILURE, FETCH_SERIES_FAILURE,
-    FETCH_SERIES_SUCCESS } from "./types"
-import { fetchMoviesApi } from '../services/movieService';
+   FETCH_MOVIE_DETAILS_SUCCESS, FETCH_MOVIE_DETAILS_FAILURE, FETCH_SERIES_FAILURE,SEARCH_MOVIES ,
+    FETCH_SERIES_SUCCESS, 
+    SET_SEARCH_TERM} from "./types"
+import { fetchMoviesApi, searchByKeywordsFromApi } from '../services/movieService';
 import { fetchSeriesFromApi } from "../services/seriesService";
 const apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYTNmZGE2YzBkOTQzNzJmNGE2MTY3OGJiYmE2M2NiZSIsInN1YiI6IjVmMzJhMTAwNjYzYjg3MDAzNzUxNmQ2YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.amIvSiL5AFK4h-bMvCjVFco6LHk86IiEVm4LlWlVhN8';
 
@@ -36,6 +37,19 @@ export const fetchMovieSuccess = (movies) => ({
     payload: error,
   });
 
+
+
+
+export const searchMovies = (searchTerm) => {
+  return {
+    type: SEARCH_MOVIES,
+    payload: {
+      searchTerm
+    }
+  };
+};
+
+
   export const fetchMovies=() =>{
     return (dispatch) => {
         fetchMoviesApi(apiKey)
@@ -58,6 +72,26 @@ export const fetchMovieSuccess = (movies) => ({
     }
   }
 
+  export const  handleSearch = (searchTerm) => {
+    return (dispatch, getState) => {
+   
+      searchByKeywordsFromApi(searchTerm)
+        .then((response) => {
+          const searchResults = response.results; 
+          dispatch(searchMovies(searchResults));
+        })
+        .catch((error) => {
+          
+          dispatch(fetchMovieFailure(error.message));
+        });
+    };
+  };
+  export const setSearchTerm = (searchTerm) => ({
+    type: SET_SEARCH_TERM,
+    payload: {
+      searchTerm,
+    },
+  });
   export const fetchMovieDetails = (movieId) => {
     return (dispatch) => {
       fetchMovieDetails(movieId, apiKey) // Replace `fetchMovieDetailsApi` with your actual API function to fetch movie details

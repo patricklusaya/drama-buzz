@@ -7,15 +7,9 @@ import Movie from './Movie';
 
 class Home extends Component {
 
-
  render() {
-
-
- 
-
   return (
     <div class='home'>
-    
      <Movie/>
     </div>
   );

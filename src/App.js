@@ -14,6 +14,7 @@ import SeriesDetails from './components/SeriesDetails';
 import Recommendations from './components/Recommendations';
 import RecommendMovie from './components/RecommendMovie';
 import { auth } from './components/config/firebase';
+import RecommendationDetails from './components/RecommendationDetails';
 class App extends Component {
   handleSignOut = () => {
     auth.signOut() // Sign out the user using Firebase auth
@@ -41,6 +42,7 @@ class App extends Component {
           <Route path="/tv-shows" element={<SeriesList />}/>
           <Route path="/auth" element={<Auth />}/>
           <Route path="/recommendations" element={<Recommendations />}/>
+          <Route path="/recommendation-details/:id" element={<RecommendationDetails />}/>
           <Route path="/recommend" element={<RecommendMovie />}/>
           <Route path="/movie-details/:id" element={<MovieDetails />} />
           <Route path="/series-details/:id" element={<SeriesDetails />} />

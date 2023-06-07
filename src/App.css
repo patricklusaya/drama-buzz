@@ -863,8 +863,29 @@ button[type='submit']:hover {
  width: 70%;
  
 }
-.allRecomendations{
+.recommend{
+  margin-top: 10px;
+  color: white;
   margin-left: 10px;
+
+
+}
+.recommend h2{
+  font-size: 20px;
+}
+.recommend p{
+  font-size: 20px;
+}
+.waveContainer{
+  margin-left: 10px;
+}
+.allRecomendations{
+  margin-left: 0px;
+}
+.subtitle{
+  margin: auto;
+  width: 100%;
+  font-size: 13px;
 }
 .auth{
   margin-left: 0%;
