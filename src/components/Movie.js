@@ -1,40 +1,40 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { fetchMovies, searchMovies, setSearchTerm } from '../redux/action';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchMovies, searchMovies, setSearchTerm } from "../redux/action";
 
-import '../App.css';
+import "../App.css";
 
 class Movie extends Component {
   componentDidMount() {
     this.props.fetchMovies();
   }
   handleSearch = () => {
-    const searchTerm = this.props.searchTerm; 
+    const searchTerm = this.props.searchTerm;
     this.props.searchMovies(searchTerm);
   };
   handleInputChange = (event) => {
     const searchTerm = event.target.value;
     this.props.setSearchTerm(searchTerm);
   };
-  
-
- 
 
   render() {
     const { movies, searchResults, error } = this.props;
     console.log(this.props.searchTerm);
 
     if (error) {
-      return <div className="movieError">{error}: Check Your Internet connection</div>;
+      return (
+        <div className="movieError">
+          {error}: Check Your Internet connection
+        </div>
+      );
     }
 
     const displayMovies = searchResults.length > 0 ? searchResults : movies;
 
     return (
       <div className="movie">
-     
-      <h2>Trending Movies</h2>
+        <h2>Trending Movies</h2>
 
         <div className="movie-card-container">
           {displayMovies.length === 0 ? (
@@ -77,7 +77,7 @@ const mapStateToProps = (state) => ({
   movies: state.movies,
   searchResults: state.searchResults,
   error: state.error,
-  searchTerm: state.searchTerm 
+  searchTerm: state.searchTerm,
 });
 const mapDispatchToProps = (dispatch) => ({
   fetchMovies: () => dispatch(fetchMovies()),
@@ -85,4 +85,4 @@ const mapDispatchToProps = (dispatch) => ({
   setSearchTerm: (searchTerm) => dispatch(setSearchTerm(searchTerm)),
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Movie);
+export default connect(mapStateToProps, mapDispatchToProps)(Movie);

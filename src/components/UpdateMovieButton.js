@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { db, auth } from './config/firebase';
-import { updateDoc, doc } from 'firebase/firestore';
+import React, { Component } from "react";
+import { db, auth } from "./config/firebase";
+import { updateDoc, doc } from "firebase/firestore";
 
 export default class UpdateMovieButton extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ export default class UpdateMovieButton extends Component {
 
   updateMovie = (id) => {
     const { title, releaseDate, description } = this.state;
-    const movieDocument = doc(db, 'movies', id);
+    const movieDocument = doc(db, "movies", id);
     const updatedMovieData = {
       title: title,
       releaseDate: releaseDate,
@@ -27,8 +27,8 @@ export default class UpdateMovieButton extends Component {
     };
     updateDoc(movieDocument, updatedMovieData)
       .then(() => {
-        console.log('Movie updated successfully');
-        this.props.getMovies(); // Call the getMovies function passed as a prop to update the movies in the parent component
+        console.log("Movie updated successfully");
+        this.props.getMovies(); 
         this.handleCloseModal();
       })
       .catch((error) => console.error(error));
@@ -53,7 +53,7 @@ export default class UpdateMovieButton extends Component {
     return (
       <div className="update">
         {isOwner && (
-          <a onClick={this.handlePopUp} style={{cursor:'pointer'}}>
+          <a onClick={this.handlePopUp} style={{ cursor: "pointer" }}>
             <i className="fa fa-edit"></i>
           </a>
         )}
